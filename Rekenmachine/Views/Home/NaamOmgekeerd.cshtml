@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Keer naam om";
+}
+
+<h2>Keer naam om</h2>
+
+<form method="post" asp-action="NaamOmgekeerd">
+    <div><input type="text" name="naam" placeholder="Geef een naam op" required /></div><br />
+    <div><input type="submit" value="NaamOmgekeerd" /></div><br />
+</form>
+
+@if (ViewData["OmgekeerdeNaam"] != null)
+{
+    <p>Reversed Name: @ViewData["OmgekeerdeNaam"]</p>
+}

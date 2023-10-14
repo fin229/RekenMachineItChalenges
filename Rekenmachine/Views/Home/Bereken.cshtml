@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Rekenmachine";
+}
+
+<h2>Rekenmachine</h2>
+
+<form method="post" asp-action="Bereken">
+    <div><input type="text" name="num1" placeholder="Num1" required /></div><br />
+    <div><input type="text" name="num2" placeholder="Num2" required /></div><br />
+    <div>
+        <select name="bewerking" required>
+            <option value="optellen">Optellen</option>
+            <option value="aftrekken">Aftrekken</option>
+            <option value="vermenigvuldigen">Vermenigvuldigen</option>
+            <option value="delen">Delen</option>
+        </select>
+    </div><br />
+    <div><input type="submit" value="Bereken" /></div><br />
+</form>
+
+@if (ViewData["Resultaat"] != null)
+{
+    <div>Resultaat: @ViewData["Resultaat"]</div>
+
+}
