@@ -1,5 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Bereken Boete";
 }
+
+<h2>Bereken Boete</h2>
+
+<form method="post" asp-action="Boete">
+    <div><input type="number" min="0" step="1" name="snelheid" class="form-control" id="amountInput" value="50"></div><br />
+    <div><input type="submit" value="Boete" /></div><br />
+</form>
+
+@if (ViewData["BoeteResultaat"] != null)
+{
+        <div>@ViewData["BoeteResultaat"]</div>
+
+}
+
