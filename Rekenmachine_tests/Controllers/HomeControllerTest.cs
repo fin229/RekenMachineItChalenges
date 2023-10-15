@@ -44,9 +44,57 @@ namespace Rekenmachine_tests.Controllers
             Assert.That(resultaat.ViewData["OmgekeerdeNaam"], Is.EqualTo("pocoboR"));
         }
 
-        [TestCase(55)] // Een voorbeeld van een snelheid groter dan 50
-        [TestCase(60)] // Nog een voorbeeld van een snelheid groter dan 50
-        public void TestBoeteBijSnelheidBoven50(int snelheid)
+        //[TestCase(55)] // Een voorbeeld van een snelheid groter dan 50
+        //[TestCase(60)] // Nog een voorbeeld van een snelheid groter dan 50
+        //public void TestBoeteBijSnelheidBoven50(int snelheid)
+        //{
+        //    // Arrange
+        //    var controller = new HomeController();
+
+        //    // Act
+        //    var resultaat = controller.Boete(snelheid) as ViewResult;
+
+        //    // Assert
+        //    Assert.That(resultaat, Is.Not.Null);
+        //    Assert.That(resultaat.ViewData["BoeteResultaat"], Is.Not.Null);
+        //    StringAssert.Contains("Boete", resultaat.ViewData["BoeteResultaat"].ToString());
+        //}
+        //[TestCase(50)] // Een voorbeeld van een snelheid gelijk aan 50
+        //[TestCase(45)] // Een voorbeeld van een snelheid minder dan 50
+        //public void TestGeenBoeteBijLageSnelheid(int snelheid)
+        //{
+        //    // Arrange
+        //    var controller = new HomeController();
+
+        //    // Act
+        //    var resultaat = controller.Boete(snelheid) as ViewResult;
+
+        //    // Assert
+        //    Assert.That(resultaat, Is.Not.Null);
+        //    Assert.That(resultaat.ViewData["BoeteResultaat"], Is.Not.Null);
+        //    StringAssert.DoesNotContain("Boete", resultaat.ViewData["BoeteResultaat"].ToString());
+        //}
+        //[TestCase(60)]
+        //[TestCase(70)]
+        //[TestCase(80)]
+        //public void TestBoeteBijSnelheidBoven50(int snelheid)
+        //{
+        //    // Arrange
+        //    var controller = new HomeController();
+
+        //    // Act
+        //    var resultaat = controller.Boete(snelheid) as ViewResult;
+
+        //    // Assert
+        //    Assert.That(resultaat, Is.Not.Null);
+        //    Assert.That(resultaat.ViewData["BoeteResultaat"], Is.Not.Null);
+        //    StringAssert.Contains("Boete", resultaat.ViewData["BoeteResultaat"].ToString());
+        //}
+        [TestCase(49, "Proficiat, u bent een van de weinige die niet te hard rijdt!")]
+        [TestCase(50, "Proficiat, u bent een van de weinige die niet te hard rijdt!")]
+        [TestCase(51, "Foei, u krijgt een boete van €150")]
+        [TestCase(55, "Foei, u krijgt een boete van €250")]
+        public void TestBoete(int snelheid, string verwachtResultaat)
         {
             // Arrange
             var controller = new HomeController();
@@ -56,25 +104,8 @@ namespace Rekenmachine_tests.Controllers
 
             // Assert
             Assert.That(resultaat, Is.Not.Null);
-            Assert.That(resultaat.ViewData["BoeteResultaat"], Is.Not.Null);
-            StringAssert.Contains("Boete", resultaat.ViewData["BoeteResultaat"].ToString());
+            Assert.That(resultaat.ViewData["BoeteResultaat"], Is.EqualTo(verwachtResultaat));
         }
-        [TestCase(50)] // Een voorbeeld van een snelheid gelijk aan 50
-        [TestCase(45)] // Een voorbeeld van een snelheid minder dan 50
-        public void TestGeenBoeteBijLageSnelheid(int snelheid)
-        {
-            // Arrange
-            var controller = new HomeController();
-
-            // Act
-            var resultaat = controller.Boete(snelheid) as ViewResult;
-
-            // Assert
-            Assert.That(resultaat, Is.Not.Null);
-            Assert.That(resultaat.ViewData["BoeteResultaat"], Is.Not.Null);
-            StringAssert.DoesNotContain("Boete", resultaat.ViewData["BoeteResultaat"].ToString());
-        }
-
     }
     
 }

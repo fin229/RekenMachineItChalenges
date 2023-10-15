@@ -22,7 +22,7 @@ namespace Rekenmachine.Controllers
             double boeteBedrag = 0;
             string resultaat = "Proficiat, u bent een van de weinige die niet te hard rijdt!";
 
-            if (snelheid >= 50)
+            if (snelheid > 50)
             {
                 boeteBedrag = 125;
                 for (int i = snelheid; i > 50; i--)
